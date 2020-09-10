@@ -23,7 +23,11 @@ default: &default
 
 development:
   <<: *default
-  database: newsletter_development
+  database: <%= ENV['NEWSLETTER_DATABASE_NAME'] %>
+  username: <%= ENV['NEWSLETTER_DATABASE_USERNAME'] %>
+  password: <%= ENV['NEWSLETTER_DATABASE_PASSWORD'] %>
+  host: <%= ENV['NEWSLETTER_DATABASE_HOST'] %>
+  port: <%= ENV['NEWSLETTER_DATABASE_PORT'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -80,6 +84,8 @@ test:
 #
 production:
   <<: *default
-  database: newsletter_production
-  username: newsletter
-  password: <%= ENV['NEWSLETTER_DATABASE_PASSWORD'] %>
+  database: <%= ENV['NEWSLETTER_PROD_DATABASE_NAME'] %>
+  username: <%= ENV['NEWSLETTER_PROD_DATABASE_USERNAME'] %>
+  password: <%= ENV['NEWSLETTER_PROD_DATABASE_PASSWORD'] %>
+  host: <%= ENV['NEWSLETTER_PROD_DATABASE_HOST'] %>
+  port: <%= ENV['NEWSLETTER_PROD_DATABASE_PORT'] %>
